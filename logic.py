@@ -124,6 +124,11 @@ WHERE project_name=? AND user_id=?
         sql = 'DELETE FROM project_skills WHERE skill_id=? AND project_id=?'
         self.__executemany(sql, [(skill_id, project_id)])
 
+    def add_photo_column(self):
+        sql = 'ALTER TABLE projects ADD COLUMN photo TEXT'
+        self.__executemany(sql, [])
+
 
 if __name__ == '__main__':
     manager = DB_Manager(DATABASE)
+    manager.add_photo_column()
